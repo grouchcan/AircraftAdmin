@@ -1,0 +1,14 @@
+{
+  "name": "air-traffic-queue",
+  "description": "Air Traffic Queueing System",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.5.0",
+    "angular-route": "~1.5.0",
+    "angular-loader": "~1.5.0",
+    "angular-mocks": "~1.5.0",
+    "angular-material": "^1.0.9",
+    "angular-ui-router": "^0.3.1"
+  }
+}

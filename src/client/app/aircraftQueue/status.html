@@ -1,0 +1,20 @@
+<md-table-container ng-controller="StatusController as vm" >
+    <table class="status-table" md-table>
+        <thead class="status-table-header">
+            <tr >
+                <th md-column class="md-column-header">Position</th>
+                <th md-column class="md-column-header">Aircraft</th>
+                <th md-column class="md-column-header">Type</th>
+                <th md-column class="md-column-header">Size</th>
+            </tr>
+            </thead>
+            <tbody md-body >
+                <tr ng-repeat="aircraft in vm.currentAircraftQueue track by aircraft.id">
+                    <td md-cell class="md-cell">{{ $index + 1 }}</td>
+                    <td md-cell class="md-cell">{{ aircraft.name }}</td>
+                    <td md-cell class="md-cell">{{ aircraft.type }}</td>
+                    <td md-cell class="md-cell">{{ aircraft.size }}</td>
+                </tr>
+            </tbody>
+    </table>
+</md-table-container>

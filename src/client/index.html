@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Air Traffic Queueing App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../bower_components/angular-material/angular-material.css">
+    <link rel="stylesheet" href="app/airtrafficapp.css">
+    <style type="text/css">
+        .ng-cloak {display:none !important}
+    </style>
+
+</head>
+<body ng-app="airTraffic" class="ng-cloak">
+<div ng-controller="NavController as vm">
+
+    <md-toolbar class="md-toolbar-tools" layout="row">
+        <md-button class="menu" ng-click="vm.toggleNavList()" hide-gt-sm>
+            <i class="material-icons">menu</i>
+        </md-button>
+        <h2 class="app-header">Aircraft Queue Admin</h2><i class="material-icons">flight_takeoff</i>
+
+    </md-toolbar>
+
+    <div ng-if="!vm.bootedUp" class="container" layout="row" layout-align="center center">
+        <md-button class="md-raised md-warn start-button" ng-click="vm.bootSystem();"><i class="material-icons nav-icon">power_settings_new</i>Start System</md-button>
+    </div>
+
+    <div ng-if="vm.bootedUp" class="container" layout="row" >
+
+        <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" md-component-id="leftNav" layout="column" class="md-sidenav-left side-nav">
+                <md-button class="md-raised nav-button" ng-click="vm.navigate('admin')"><i class="material-icons nav-icon">reorder</i> Aircraft Admin</md-button>
+              <md-button class="md-raised nav-button" ng-click="vm.navigate('status')"> <i class="material-icons nav-icon">airplanemode_active</i>Queue Status</md-button>
+
+        </md-sidenav>
+
+        <md-content class="content-wrapper" id="content" flex>
+            <div ui-view></div>
+        </md-content>
+    </div>
+</div>
+
+<!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+-->
+    <script src="../../bower_components/angular/angular.js"></script>
+    <script src="../../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="../../bower_components/angular-aria/angular-aria.js"></script>
+    <script src="../../bower_components/angular-animate/angular-animate.js"></script>
+    <script src="../../bower_components/angular-messages/angular-messages.js"></script>
+    <script src="../../bower_components/angular-material/angular-material.js"></script>
+
+
+    <script src="app/airtrafficapp.module.js"></script>
+
+    <script src="app/core/core.module.js"></script>
+    <script src="app/core/dataservice.js"></script>
+    <script src="app/core/mockdata.service.js"></script>
+    <script src="app/core/precedence.service.js"></script>
+    <script src="app/core/queuing.service.js"></script>
+
+    <script src="app/aircraftAdmin/admin.module.js"></script>
+    <script src="app/aircraftAdmin/admin.controller.js"></script>
+
+    <script src="app/aircraftQueue/status.module.js"></script>
+    <script src="app/aircraftQueue/status.controller.js"></script>
+
+
+</body>
+</html>

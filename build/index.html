@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Air Traffic Queueing App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="content/vendor.min.css">
+    <link rel="stylesheet" href="content/all.min.css">
+    <style type="text/css">
+        .ng-cloak {display:none !important}
+    </style>
+
+</head>
+<body ng-app="airTraffic" class="ng-cloak">
+<div ng-controller="NavController as vm">
+
+    <md-toolbar class="md-toolbar-tools" layout="row">
+        <md-button class="menu" ng-click="vm.toggleNavList()" hide-gt-sm>
+            <i class="material-icons">menu</i>
+        </md-button>
+        <h2 class="app-header">Aircraft Queue Admin</h2><i class="material-icons">flight_takeoff</i>
+
+    </md-toolbar>
+
+    <div ng-if="!vm.bootedUp" class="container" layout="row" layout-align="center center">
+        <md-button class="md-raised md-warn start-button" ng-click="vm.bootSystem();"><i class="material-icons nav-icon">power_settings_new</i>Start System</md-button>
+    </div>
+
+    <div ng-if="vm.bootedUp" class="container" layout="row" >
+
+        <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" md-component-id="leftNav" layout="column" class="md-sidenav-left side-nav">
+            <md-button class="md-raised nav-button" ng-click="vm.navigate('admin')"><i class="material-icons nav-icon">reorder</i> Aircraft Admin</md-button>
+            <md-button class="md-raised nav-button" ng-click="vm.navigate('status')"> <i class="material-icons nav-icon">airplanemode_active</i>Queue Status</md-button>
+
+        </md-sidenav>
+
+        <md-content class="content-wrapper" id="content" flex>
+            <div ui-view></div>
+        </md-content>
+    </div>
+</div>
+
+<script src="vendor.min.js"></script>
+<script src="templates.js"></script>
+<script src="all.min.js"></script>
+</body>
+</html>
